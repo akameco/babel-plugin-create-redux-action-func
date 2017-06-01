@@ -6,9 +6,33 @@ import type { Action } from './actionTypes';
 import { HOGE } from './constants';
 
 export function hoge(): Action {
-    return {
-        type: HOGE
-    };
+  return {
+    type: HOGE
+  };
+}"
+`;
+
+exports[`opts actionTypes=\`test\` 1`] = `
+"// @flow
+import type { Action } from './test.js';
+import { HOGE } from './constants';
+
+export function hoge(): Action {
+  return {
+    type: HOGE
+  };
+}"
+`;
+
+exports[`opts constantsFile=\`test\` 1`] = `
+"// @flow
+import type { Action } from './actionTypes';
+import { HOGE } from './test.js';
+
+export function hoge(): Action {
+  return {
+    type: HOGE
+  };
 }"
 `;
 
@@ -18,15 +42,15 @@ import type { Action } from './actionTypes';
 import { HOGE, HOGE_FOO } from './constants';
 
 export function hoge(id: number): Action {
-    return {
-        type: HOGE,
-        id
-    };
+  return {
+    type: HOGE,
+    id
+  };
 }
 export function hogeFoo(): Action {
-    return {
-        type: HOGE_FOO
-    };
+  return {
+    type: HOGE_FOO
+  };
 }"
 `;
 
@@ -36,9 +60,9 @@ import type { Action } from './actionTypes';
 import { HOGE } from './constants';
 
 export function hoge(id: number): Action {
-    return {
-        type: HOGE,
-        id
-    };
+  return {
+    type: HOGE,
+    id
+  };
 }"
 `;

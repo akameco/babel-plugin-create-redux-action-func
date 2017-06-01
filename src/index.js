@@ -124,15 +124,23 @@ function createImports({ file, opts }) {
   return t.importDeclaration(specifiers, t.stringLiteral(`./${constantsFile}`))
 }
 
+function getActionFile({ opts, file } /* : Object */) {
+  if (opts.actionTypes) {
+    return opts.actionTypes
+  }
+  if (file.opts.filename !== 'unknown') {
+    return file.opts.filename
+  }
+  return 'actionTypes'
+}
+
 // import tyep { Action } from './actionTypes'
 function createActionTypeImport({ file, opts }) {
   const actionSpecifiers = [
     t.importSpecifier(t.identifier(ACTION), t.identifier(ACTION)),
   ]
 
-  const filename = opts.filename || file.opts.filename !== 'unknown'
-    ? file.opts.filename
-    : 'actionTypes'
+  const filename = getActionFile({ file, opts })
   const importAction = t.importDeclaration(
     actionSpecifiers,
     t.stringLiteral(`./${filename}`)
