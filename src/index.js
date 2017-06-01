@@ -160,12 +160,10 @@ export default () => {
         exit({ node } /* : Object */, state /* : Object */) {
           removeFlowComments(state.file.ast.comments)
 
-          const set /* :Set<*> */ = state.file.get(IMPORT_TYPES)
-
           node.body = [
             createActionTypeImport(state),
             createImports(state),
-            ...Array.from(set.values()),
+            ...Array.from(state.file.get(IMPORT_TYPES).values()),
             t.noop(),
             ...Array.from(state.file.get(CREATE_REDUX_ACTION_TYPE).values()),
           ]
