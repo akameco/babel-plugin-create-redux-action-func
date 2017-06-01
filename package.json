@@ -17,6 +17,7 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
+  "main": "lib/index.js",
   "files": [
     "lib/index.js"
   ],
