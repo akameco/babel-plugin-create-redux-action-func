@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic 1`] = `
+"// @flow
+import type { Action } from './actionTypes';
+import { HOGE } from './constants';
+
+export function hoge(): Action {
+    return {
+        type: HOGE
+    };
+}"
+`;
+
+exports[`two func with args 1`] = `
+"// @flow
+import type { Action } from './actionTypes';
+import { HOGE, HOGE_FOO } from './constants';
+
+export function hoge(id: number): Action {
+    return {
+        type: HOGE,
+        id
+    };
+}
+export function hogeFoo(): Action {
+    return {
+        type: HOGE_FOO
+    };
+}"
+`;
+
+exports[`with args 1`] = `
+"// @flow
+import type { Action } from './actionTypes';
+import { HOGE } from './constants';
+
+export function hoge(id: number): Action {
+    return {
+        type: HOGE,
+        id
+    };
+}"
+`;
