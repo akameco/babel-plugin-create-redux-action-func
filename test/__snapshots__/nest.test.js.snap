@@ -1,5 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`another type import 1`] = `
+"// @flow
+import type { Action } from './actionTypes';
+import { FOO, FOO_ID } from './constants';
+
+import type { ID, Text } from './types';
+
+export function foo(): Action {
+  return {
+    type: FOO
+  };
+}
+export function fooId(id: ID, text: Text): Action {
+  return {
+    type: FOO_ID,
+    id,
+    text
+  };
+}"
+`;
+
 exports[`nest union type 1`] = `
 "// @flow
 import type { Action } from './actionTypes';

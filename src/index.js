@@ -5,6 +5,7 @@ import syntaxFlow from 'babel-plugin-syntax-flow'
 import camelCase from 'camelcase'
 
 const CREATE_REDUX_ACTION_TYPE = Symbol('CREATE_REDUX_ACTION_TYPE')
+const IMPORT_TYPES = Symbol('IMPORT_TYPE')
 const ACTION = 'Action'
 
 /* ::
@@ -151,6 +152,7 @@ export default () => {
     pre(file /* : Object */) {
       if (!file.get(CREATE_REDUX_ACTION_TYPE)) {
         file.set(CREATE_REDUX_ACTION_TYPE, new Map())
+        file.set(IMPORT_TYPES, new Set())
       }
     },
     visitor: {
@@ -158,9 +160,12 @@ export default () => {
         exit({ node } /* : Object */, state /* : Object */) {
           removeFlowComments(state.file.ast.comments)
 
+          const set /* :Set<*> */ = state.file.get(IMPORT_TYPES)
+
           node.body = [
             createActionTypeImport(state),
             createImports(state),
+            ...Array.from(set.values()),
             t.noop(),
             ...Array.from(state.file.get(CREATE_REDUX_ACTION_TYPE).values()),
           ]
@@ -168,6 +173,12 @@ export default () => {
       },
       TypeAlias(path /* : Object */, state /* : Object */) {
         generateFunctions(path, state)
+      },
+      ImportDeclaration(path /* : Object */, { file } /* : Object */) {
+        if (path.node.importKind === 'type') {
+          const imports /* :Set<*> */ = file.get(IMPORT_TYPES)
+          imports.add(path.node)
+        }
       },
     },
   }
