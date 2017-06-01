@@ -27,14 +27,14 @@ import type { Action } from './actionTypes';
 import { HOGE, FOO } from './constants';
 
 export function hoge(): Action {
-    return {
-        type: HOGE
-    };
+  return {
+    type: HOGE
+  };
 }
 export function foo(): Action {
-    return {
-        type: FOO
-    };
+  return {
+    type: FOO
+  };
 }"
 `;
 
@@ -44,19 +44,19 @@ import type { Action } from './actionTypes';
 import { HOGE, FOO, FOO_FUGA } from './constants';
 
 export function hoge(): Action {
-    return {
-        type: HOGE
-    };
+  return {
+    type: HOGE
+  };
 }
 export function foo(): Action {
-    return {
-        type: FOO
-    };
+  return {
+    type: FOO
+  };
 }
 export function fooFuga(id: number): Action {
-    return {
-        type: FOO_FUGA,
-        id
-    };
+  return {
+    type: FOO_FUGA,
+    id
+  };
 }"
 `;
