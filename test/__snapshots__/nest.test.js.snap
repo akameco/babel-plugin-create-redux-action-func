@@ -12,6 +12,7 @@ export function foo(): Action {
     type: FOO
   };
 }
+
 export function fooId(id: ID, text: Text): Action {
   return {
     type: FOO_ID,
@@ -31,6 +32,7 @@ export function hoge(): Action {
     type: HOGE
   };
 }
+
 export function foo(): Action {
   return {
     type: FOO
@@ -48,11 +50,13 @@ export function hoge(): Action {
     type: HOGE
   };
 }
+
 export function foo(): Action {
   return {
     type: FOO
   };
 }
+
 export function fooFuga(id: number): Action {
   return {
     type: FOO_FUGA,

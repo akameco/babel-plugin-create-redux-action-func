@@ -168,12 +168,15 @@ export default () => {
         exit({ node } /* : Object */, state /* : Object */) {
           removeFlowComments(state.file.ast.comments)
 
+          const funcs = Array.from(
+            state.file.get(CREATE_REDUX_ACTION_TYPE).values()
+          ).reduce((prev, func) => prev.concat([t.noop(), func]), [])
+
           node.body = [
             createActionTypeImport(state),
             createImports(state),
             ...Array.from(state.file.get(IMPORT_TYPES).values()),
-            t.noop(),
-            ...Array.from(state.file.get(CREATE_REDUX_ACTION_TYPE).values()),
+            ...funcs,
           ]
         },
       },

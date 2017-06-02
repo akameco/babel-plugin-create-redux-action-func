@@ -47,6 +47,7 @@ export function hoge(id: number): Action {
     id
   };
 }
+
 export function hogeFoo(): Action {
   return {
     type: HOGE_FOO
