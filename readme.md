@@ -22,6 +22,7 @@ $ yarn add --dev babel-plugin-create-redux-action-func
 In:
 
 ```js
+// @flow
 type ADD_HOGE_TYPE = 'hoge/ADD_HOGE'
 type DELETE_HOGE_TYPE = 'hoge/DELETE_HOGE'
 type Action = { +type: ADD_HOGE_TYPE } | { +type: DELETE_HOGE_TYPE, +id: number }
@@ -30,6 +31,7 @@ type Action = { +type: ADD_HOGE_TYPE } | { +type: DELETE_HOGE_TYPE, +id: number 
 Out:
 
 ```js
+// @flow
 import type { Action } from './actionTypes';
 import { ADD_HOGE, DELETE_HOGE } from './constants';
 
