@@ -134,7 +134,7 @@ function getActionFile({ opts, file } /* : Object */) {
   return 'actionTypes'
 }
 
-// import tyep { Action } from './actionTypes'
+// import type { Action } from './actionTypes'
 function createActionTypeImport({ file, opts }) {
   const actionSpecifiers = [
     t.importSpecifier(t.identifier(ACTION), t.identifier(ACTION)),
