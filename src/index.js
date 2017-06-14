@@ -3,6 +3,7 @@ import * as t from 'babel-types'
 import template from 'babel-template'
 import syntaxFlow from 'babel-plugin-syntax-flow'
 import camelCase from 'camelcase'
+import { removeFlowComment } from 'babel-add-flow-comments'
 
 const CREATE_REDUX_ACTION_TYPE = Symbol('CREATE_REDUX_ACTION_TYPE')
 const IMPORT_TYPES = Symbol('IMPORT_TYPE')
@@ -26,18 +27,6 @@ function trimType(target /* : string */) {
     return target.replace(/_TYPE$/, '')
   }
   return target
-}
-
-function removeFlowComments(comments /* : Array<Object> */) {
-  const FLOW_DIRECTIVE = '@flow'
-  for (const comment of comments) {
-    if (comment.value.indexOf(FLOW_DIRECTIVE) >= 0) {
-      comment.value = comment.value.replace(FLOW_DIRECTIVE, '')
-      if (!comment.value.replace(/\*/g, '').trim()) {
-        comment.ignore = true
-      }
-    }
-  }
 }
 
 function generateFunction(
@@ -166,7 +155,7 @@ export default () => {
     visitor: {
       Program: {
         exit({ node } /* : Object */, state /* : Object */) {
-          removeFlowComments(state.file.ast.comments)
+          removeFlowComment(state.file.ast.comments)
 
           const funcs = Array.from(
             state.file.get(CREATE_REDUX_ACTION_TYPE).values()
