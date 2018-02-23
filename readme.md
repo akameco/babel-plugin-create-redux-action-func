@@ -1,5 +1,7 @@
 # babel-plugin-create-redux-action-func [![Build Status](https://travis-ci.org/akameco/babel-plugin-create-redux-action-func.svg?branch=master)](https://travis-ci.org/akameco/babel-plugin-create-redux-action-func)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/akameco/babel-plugin-create-redux-action-func.svg)](https://greenkeeper.io/)
+
 > create redux action creater from action type
 
 Auto Generate redux actionCreater from flowtype.
